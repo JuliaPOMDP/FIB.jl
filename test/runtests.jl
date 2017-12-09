@@ -1,5 +1,13 @@
 using FIB
+using POMDPs
+using POMDPModels
+using POMDPToolbox
 using Base.Test
 
-# write your own tests here
-@test 1 == 2
+pomdp = BabyPOMDP()
+solver = FIBSolver()
+
+@requirements_info solver pomdp
+
+policy = solve(solver, pomdp)
+
