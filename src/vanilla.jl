@@ -1,3 +1,4 @@
+# tolerance is ||alpha^k - alpha^k+1||_infty
 mutable struct FIBSolver <: Solver
     max_iterations::Int64
     tolerance::Float64
@@ -24,9 +25,7 @@ function FIBPolicy(pomdp::POMDP; alphas::Matrix{Float64}=zeros(0,0))
     return FIBPolicy(alphas, action_map, pomdp)
 end
 
-create_policy(solver::FIBSolver, pomdp::POMDP) = FIBPolicy(pomdp)
-
-function solve(solver::FIBSolver, pomdp::POMDP, policy::FIBPolicy=create_policy(solver, pomdp))
+function solve(solver::FIBSolver, pomdp::POMDP; verbose::Bool=false)
     ns = n_states(pomdp)
     na = n_actions(pomdp)
 
@@ -39,7 +38,10 @@ function solve(solver::FIBSolver, pomdp::POMDP, policy::FIBPolicy=create_policy(
 
     for i = 1:solver.max_iterations
 
+        # copy!(dest, src)
         copy!(old_alphas, alphas)
+
+        residual = 0.0
 
         for (ai, a) in enumerate(action_list)
             for (si, s) in enumerate(state_list)
@@ -49,7 +51,6 @@ function solve(solver::FIBSolver, pomdp::POMDP, policy::FIBPolicy=create_policy(
                 # Sum_o max_a' Sum_s' O(o | s',a) T(s'|s,a) alpha_a^k(s')
                 o_sum = 0.0
                 for o in obs_list
-                    o_sum 
 
                     # take maximum over ap
                     ap_sum = -Inf
@@ -73,8 +74,14 @@ function solve(solver::FIBSolver, pomdp::POMDP, policy::FIBPolicy=create_policy(
                 r = reward(pomdp, s, a)
 
                 alphas[si, ai] = r + pomdp.discount * o_sum
+
+                alpha_diff = abs(alphas[si, ai] - old_alphas[si, ai])
+                residual = max(alpha_diff, residual)
             end
         end
+
+        verbose ? @printf("[Iteration %-4d] residual: %10.3G \n", i, residual) : nothing
+        residual < solver.tolerance ? break : nothing
     end
 
     return FIBPolicy(pomdp, alphas=alphas)
