@@ -21,9 +21,3 @@ solver = FIBSolver()
 # run the solver
 policy = solve(solver, pomdp)
 ```
-
-## TODO
-
-* Finish making tests
-* put into NATIVE_PACKAGES list in POMDPs.jl
-* add in tolerance check like QMDP
