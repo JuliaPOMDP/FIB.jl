@@ -25,6 +25,18 @@ function FIBPolicy(pomdp::POMDP; alphas::Matrix{Float64}=zeros(0,0))
     return FIBPolicy(alphas, action_map, pomdp)
 end
 
+updater(p::FIBPolicy) = DiscreteUpdater(p.pomdp)
+
+# TODO: I think this is inefficient
+#  b' allocates a new vector
+#  maybe I should just iterate instead of using matrix multiplication
+value(p::FIBPolicy, b::DiscreteBelief) = maximum(b.b' * p.alphas)
+
+function action(p::FIBPolicy, b::DiscreteBelief)
+    a_ind = indmax(b.b' * p.alphas)
+    return p.action_map[a_ind]
+end
+
 function solve(solver::FIBSolver, pomdp::POMDP; verbose::Bool=false)
     ns = n_states(pomdp)
     na = n_actions(pomdp)
