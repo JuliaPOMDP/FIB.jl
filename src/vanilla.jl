@@ -85,7 +85,7 @@ function solve(solver::FIBSolver, pomdp::POMDP; verbose::Bool=false)
 
                 r = reward(pomdp, s, a)
 
-                alphas[si, ai] = r + pomdp.discount * o_sum
+                alphas[si, ai] = r + discount(pomdp) * o_sum
 
                 alpha_diff = abs(alphas[si, ai] - old_alphas[si, ai])
                 residual = max(alpha_diff, residual)
