@@ -24,3 +24,7 @@ v = value(policy, b)
 
 @test a
 @test isapprox(v, -24.4557, atol=1e-4)
+
+# tests from POMDPToolbox to make sure typical usage works
+test_solver(solver, BabyPOMDP())
+test_solver(solver, TigerPOMDP())
