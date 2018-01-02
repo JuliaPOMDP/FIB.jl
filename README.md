@@ -14,10 +14,13 @@ Pkg.clone("https://github.com/JuliaPOMDP/FIB.jl")
 
 ```julia
 using FIB
-pomdp = MyPOMDP() # initialize POMDP
+using POMDPModels
+pomdp = TigerPOMDP() # initialize POMDP
 
 solver = FIBSolver()
 
 # run the solver
 policy = solve(solver, pomdp)
 ```
+
+FIB.jl solves problems implemented using the [POMDPs.jl interface](https://github.com/JuliaPOMDP/POMDPs.jl). See the [documentation for POMDPs.jl](http://juliapomdp.github.io/POMDPs.jl/latest/) for more information.
