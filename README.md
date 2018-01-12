@@ -21,7 +21,8 @@ pomdp = TigerPOMDP() # initialize POMDP
 solver = FIBSolver()
 
 # run the solver
-policy = solve(solver, pomdp)
+policy = solve(solver, pomdp)   # policy is of type AlphaVectorPolicy
 ```
+The result of `solve` is an `AlphaVectorPolicy`. This policy type is implemented in [POMDPToolbox.jl](https://github.com/JuliaPOMDP/POMDPToolbox.jl).
 
 FIB.jl solves problems implemented using the [POMDPs.jl interface](https://github.com/JuliaPOMDP/POMDPs.jl). See the [documentation for POMDPs.jl](http://juliapomdp.github.io/POMDPs.jl/latest/) for more information.

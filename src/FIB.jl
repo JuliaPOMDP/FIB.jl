@@ -3,15 +3,11 @@ module FIB
 using POMDPs
 using POMDPToolbox
 
-import POMDPs: Solver, Policy
-import POMDPs: solve, action, value, update, initialize_belief, updater
+import POMDPs: Solver, Policy, solve
 
 export
     FIBSolver,
-    FIBPolicy,
-    solve,
-    action,
-    value
+    solve
 
 include("vanilla.jl")
 
