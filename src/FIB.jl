@@ -1,6 +1,9 @@
+__precompile__()
+
 module FIB
 
 using POMDPs
+
 using POMDPToolbox
 
 import POMDPs: Solver, Policy, solve
