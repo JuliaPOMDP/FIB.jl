@@ -11,7 +11,8 @@ Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 [extras]
 BeliefUpdaters = "449812bc-a0b5-11e8-3863-0db9323dc191"
 POMDPModels = "355abbd5-f08e-5560-ac9e-8b5f2592a0ca"
+POMDPTesting = "a2a28f38-a243-11e8-2b97-a5b162ba3e4e"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["BeliefUpdaters", "POMDPModels", "Test"]
+test = ["BeliefUpdaters", "POMDPModels", "POMDPTesting", "Test"]

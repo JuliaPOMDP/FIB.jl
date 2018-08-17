@@ -2,6 +2,7 @@ using FIB
 using POMDPs
 using POMDPModels
 using BeliefUpdaters
+using POMDPTesting
 using Test     # for @test
 
 pomdp = BabyPOMDP()
@@ -28,5 +29,5 @@ v = value(policy, b)
 @test isapprox(v, -24.4557, atol=1e-4)
 
 # tests from POMDPToolbox to make sure typical usage works
-# test_solver(solver, BabyPOMDP())
-# test_solver(solver, TigerPOMDP())
+test_solver(solver, BabyPOMDP())
+test_solver(solver, TigerPOMDP())
