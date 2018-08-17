@@ -21,8 +21,8 @@ function solve(solver::FIBSolver, pomdp::POMDP; verbose::Bool=false)
 
     for i = 1:solver.max_iterations
 
-        # copy!(dest, src)
-        copy!(old_alphas, alphas)
+        # copyto!(dest, src)
+        copyto!(old_alphas, alphas)
 
         residual = 0.0
 
