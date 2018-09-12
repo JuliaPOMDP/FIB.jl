@@ -2,13 +2,18 @@
 mutable struct FIBSolver <: Solver
     max_iterations::Int64
     tolerance::Float64
+    verbose::Bool
 end
-function FIBSolver(;max_iterations::Int64=100, tolerance::Float64=1e-3)
-    return FIBSolver(max_iterations, tolerance)
+function FIBSolver(;max_iterations::Int64=100, tolerance::Float64=1e-3, verbose::Bool=false)
+    return FIBSolver(max_iterations, tolerance, verbose)
 end
 
 
-function solve(solver::FIBSolver, pomdp::POMDP; verbose::Bool=false)
+function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
+    if !isempty(kwargs)
+        @warn("Keyword args for solve(::FIBSolver, ::MDP) are no longer supported. For verbose output, use the verbose option in the FIBSolver")
+    end
+
     ns = n_states(pomdp)
     na = n_actions(pomdp)
 
@@ -63,7 +68,7 @@ function solve(solver::FIBSolver, pomdp::POMDP; verbose::Bool=false)
             end
         end
 
-        verbose ? @printf("[Iteration %-4d] residual: %10.3G \n", i, residual) : nothing
+        solver.verbose ? @printf("[Iteration %-4d] residual: %10.3G \n", i, residual) : nothing
         residual < solver.tolerance ? break : nothing
     end
 
