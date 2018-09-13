@@ -15,8 +15,8 @@ policy = solve(solver, pomdp)
 # test that alpha vectors turn out mostly correct
 @testset "alpha vectors" begin
     alphas = Vector{Float64}[]
-    push!(alphas, [-29.4557, -19.4557])
-    push!(alphas, [-36.5093, -16.0629])
+    push!(alphas, [-19.4557, -29.4557])
+    push!(alphas, [-16.0629, -36.5093])
     @test isapprox(policy.alphas, alphas, atol=1e-4)
 end
 
@@ -29,7 +29,7 @@ end
     a = action(policy, b)
     v = value(policy, b)
 
-    @test a
+    @test !a
     @test isapprox(v, -24.4557, atol=1e-4)
 end
 
