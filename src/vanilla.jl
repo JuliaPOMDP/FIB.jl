@@ -36,6 +36,11 @@ function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
 
                 sp_dist = transition(pomdp, s, a)
 
+                r = 0.0
+                for (sp, p_sp) in weighted_iterator(sp_dist)
+                    r += p_sp*reward(pomdp, s, a, sp)
+                end
+
                 # Sum_o max_a' Sum_s' O(o | s',a) T(s'|s,a) alpha_a^k(s')
                 o_sum = 0.0
                 for o in obs_list
@@ -46,10 +51,10 @@ function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
 
                         # Sum_s' O(o | s',a) T(s'|s,a) alpha_a^k(s')
                         temp_ap_sum = 0.0
-                        for (spi, sp) in enumerate(state_list)
+                        for (sp, p_sp) in weighted_iterator(sp_dist)
                             o_dist = observation(pomdp, a, sp)
                             p_o = pdf(o_dist, o)
-                            p_sp = pdf(sp_dist, sp)
+                            spi = stateindex(pomdp, sp)
 
                             temp_ap_sum += p_o * p_sp * old_alphas[spi,api]
                         end
@@ -58,8 +63,6 @@ function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
 
                     o_sum += ap_sum
                 end
-
-                r = reward(pomdp, s, a)
 
                 alphas[si, ai] = r + discount(pomdp) * o_sum
 
