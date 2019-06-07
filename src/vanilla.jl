@@ -22,7 +22,7 @@ function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
 
     state_list = ordered_states(pomdp)
     obs_list = observations(pomdp)
-    action_list = actions(pomdp)
+    action_list = ordered_actions(pomdp)
 
     for i = 1:solver.max_iterations
 
@@ -75,5 +75,5 @@ function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
         residual < solver.tolerance ? break : nothing
     end
 
-    return AlphaVectorPolicy(pomdp, alphas)
+    return AlphaVectorPolicy(pomdp, alphas, action_list)
 end
