@@ -9,7 +9,7 @@ pomdp = BabyPOMDP()
 solver = FIBSolver()
 policy = solve(solver, pomdp)
 
-#@requirements_info solver pomdp
+@requirements_info solver pomdp
 
 @testset "all" begin
 # test that alpha vectors turn out mostly correct

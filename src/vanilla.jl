@@ -14,15 +14,15 @@ function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
         @warn("Keyword args for solve(::FIBSolver, ::MDP) are no longer supported. For verbose output, use the verbose option in the FIBSolver")
     end
 
-    ns = n_states(pomdp)
-    na = n_actions(pomdp)
-
-    alphas = zeros(ns,na)
-    old_alphas = zeros(ns,na)
-
     state_list = ordered_states(pomdp)
     obs_list = observations(pomdp)
     action_list = ordered_actions(pomdp)
+
+    ns = length(state_list)
+    na = length(action_list)
+
+    alphas = zeros(ns,na)
+    old_alphas = zeros(ns,na)
 
     for i = 1:solver.max_iterations
 
