@@ -3,15 +3,19 @@ using POMDPs
 using POMDPModels
 using BeliefUpdaters
 using POMDPTesting
+using POMDPLinter: show_requirements, get_requirements
 using Test
 
 pomdp = BabyPOMDP()
 solver = FIBSolver()
 policy = solve(solver, pomdp)
 
-@requirements_info solver pomdp
 
 @testset "all" begin
+
+@test_skip @requirements_info solver pomdp
+show_requirements(get_requirements(POMDPs.solve, (solver, pomdp)))
+
 # test that alpha vectors turn out mostly correct
 @testset "alpha vectors" begin
     alphas = Vector{Float64}[]
