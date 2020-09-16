@@ -52,7 +52,7 @@ function solve(solver::FIBSolver, pomdp::POMDP; kwargs...)
                         # Sum_s' O(o | s',a) T(s'|s,a) alpha_a^k(s')
                         temp_ap_sum = 0.0
                         for (sp, p_sp) in weighted_iterator(sp_dist)
-                            o_dist = observation(pomdp, a, sp)
+                            o_dist = observation(pomdp, s, a, sp)
                             p_o = pdf(o_dist, o)
                             spi = stateindex(pomdp, sp)
 
