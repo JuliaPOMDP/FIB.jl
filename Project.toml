@@ -12,7 +12,7 @@ Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 [compat]
 POMDPLinter = "0.1"
 POMDPModelTools = "0.2, 0.3"
-POMDPPolicies = "0.2, 0.3"
+POMDPPolicies = "0.2, 0.3, 0.4"
 POMDPs = "0.9"
 julia = "1"
 
