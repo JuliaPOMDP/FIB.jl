@@ -1,7 +1,7 @@
 name = "FIB"
 uuid = "13b007ba-0ca8-5af2-9adf-bc6a6301e25a"
 repo = "https://github.com/JuliaPOMDP/FIB.jl"
-version = "0.4.2"
+version = "0.4.3"
 
 [deps]
 POMDPModelTools = "08074719-1b2a-587c-a292-00f91cc44415"
