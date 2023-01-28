@@ -1,8 +1,7 @@
 using FIB
 using POMDPs
 using POMDPModels
-using BeliefUpdaters
-using POMDPTesting
+using POMDPTools
 using POMDPLinter: show_requirements, get_requirements
 using Test
 
