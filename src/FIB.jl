@@ -1,8 +1,7 @@
 module FIB
 
 using POMDPs
-using POMDPModelTools
-using POMDPPolicies
+using POMDPTools
 using Printf
 
 import POMDPs: Solver, Policy, solve
