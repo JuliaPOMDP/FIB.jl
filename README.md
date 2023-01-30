@@ -8,10 +8,7 @@ Implements the fast informed bound (FIB) solver for POMDPs.
 ## Installation
 
 ```julia
-Pkg.clone("https://github.com/JuliaPOMDP/FIB.jl")
-```
-
-## Usage
+Pkg.add("FIB")
 
 ```julia
 using FIB
