@@ -10,6 +10,7 @@ Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 
 [compat]
 POMDPLinter = "0.1"
+POMDPTools = "0.1"
 POMDPs = "0.9"
 julia = "1"
 
