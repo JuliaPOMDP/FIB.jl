@@ -3,7 +3,9 @@
 [![Build Status](https://github.com/JuliaPOMDP/FIB.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaPOMDP/FIB.jl/actions/workflows/CI.yml/)
 [![codecov](https://codecov.io/gh/JuliaPOMDP/FIB.jl/branch/master/graph/badge.svg?token=nlr4r9x83U)](https://codecov.io/gh/JuliaPOMDP/FIB.jl)
 
-Implements the fast informed bound (FIB) solver for POMDPs.
+Implements the fast informed bound (FIB) solver for POMDPs. FIB is discussed in Sec. 21.2 of:
+
+* M. J. Kochenderfer, T. A. Wheeler, and K. H. Wray, [Algorithms for Decision Making](https://algorithmsbook.com/decisionmaking), MIT Press, 2022.
 
 ## Installation
 
