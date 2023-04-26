@@ -1,7 +1,7 @@
 # FIB
 
-[![Build Status](https://travis-ci.org/JuliaPOMDP/FIB.jl.svg?branch=master)](https://travis-ci.org/JuliaPOMDP/FIB.jl)
-[![Coverage Status](https://coveralls.io/repos/JuliaPOMDP/FIB.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaPOMDP/FIB.jl?branch=master)
+[![Build Status](https://github.com/JuliaPOMDP/FIB.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaPOMDP/FIB.jl/actions/workflows/CI.yml/)
+[![codecov](https://codecov.io/gh/JuliaPOMDP/FIB.jl/branch/master/graph/badge.svg?token=nlr4r9x83U)](https://codecov.io/gh/JuliaPOMDP/FIB.jl)
 
 Implements the fast informed bound (FIB) solver for POMDPs.
 
